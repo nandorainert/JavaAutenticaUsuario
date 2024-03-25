@@ -2,11 +2,11 @@ package br.com.autenticacao.model;
 
 public class Usuario {
 	
-	int id;
-	String nome;
-	String email;
-	String senha;
-	Boolean ativo;
+	private int id;
+	private String nome;
+	private String email;
+	private String senha;
+	private Boolean isAtivo;
 	
 	public Usuario() {
 	}
@@ -15,12 +15,12 @@ public class Usuario {
 		this.id = id;
 	}
 
-	public Usuario(int id, String nome, String email, String senha, Boolean ativo) {
+	public Usuario(int id, String nome, String email, String senha, Boolean isAtivo) {
 		this.id = id;
 		this.nome = nome;
 		this.email = email;
 		this.senha = senha;
-		this.ativo = ativo;
+		this.isAtivo = isAtivo;
 	}
 
 	public int getId() {
@@ -55,12 +55,12 @@ public class Usuario {
 		this.senha = senha;
 	}
 
-	public Boolean getAtivo() {
-		return ativo;
+	public Boolean getisAtivo() {
+		return isAtivo;
 	}
 
-	public void setAtivo(Boolean ativo) {
-		this.ativo = ativo;
+	public void setisAtivo(Boolean isAtivo) {
+		this.isAtivo = isAtivo;
 	}
 	
 	

@@ -34,7 +34,9 @@ public class UsuarioDAOImpl implements GenericDAO {
 			while (rs.next()) {
 				Usuario usuario = new Usuario();
 				usuario.setId(rs.getInt("id"));
-				usuario.setNome(rs.getString("Nome"));
+				usuario.setNome(rs.getString("nome"));
+				usuario.setEmail(rs.getString("email"));
+				usuario.setisAtivo(rs.getBoolean("is_ativo"));
 				lista.add(usuario);
 			}
 		} catch (SQLException ex) {
