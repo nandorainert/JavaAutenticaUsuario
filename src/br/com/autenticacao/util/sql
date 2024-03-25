@@ -1,0 +1,10 @@
+-- CRIANDO TABELA usuario
+
+CREATE TABLE usuario (
+	id SERIAL,
+	nome VARCHAR(150) NOT NULL,
+	email VARCHAR(150) NOT NULL,
+	senha VARCHAR(200) NOT NULL,
+	is_ativo BOOLEAN,
+	CONSTRAINT pk_usuario primary key (id)
+);
