@@ -27,7 +27,7 @@ public class UsuarioDAOImpl implements GenericDAO {
 		List<Object> lista = new ArrayList<Object>();
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		String sql = "SELECT * FROM usuario";
+		String sql = "SELECT id, nome, email, is_ativo FROM usuario";
 		try {
 			stmt = conn.prepareStatement(sql);
 			rs = stmt.executeQuery();
