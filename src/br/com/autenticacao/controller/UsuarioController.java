@@ -2,7 +2,6 @@ package br.com.autenticacao.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import br.com.autenticacao.DAO.GenericDAO;
 import br.com.autenticacao.DAO.UsuarioDAOImpl;
 import br.com.autenticacao.model.Usuario;
