@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import br.com.autenticacao.model.Usuario;
 import br.com.autenticacao.util.ConnectionFactory;
 
@@ -101,6 +103,7 @@ public class UsuarioDAOImpl implements GenericDAO {
 			stmt.setString(3, usuario.getSenha());
 			stmt.setBoolean(4,true);
 			stmt.execute();
+			JOptionPane.showMessageDialog(null,"Usuário cadastrado.");
 			return true;
 		} catch (SQLException ex) {
 			System.out.println("Problemas na DAO ao cadastrar usuario " + ex.getMessage());
@@ -169,4 +172,26 @@ public class UsuarioDAOImpl implements GenericDAO {
 		
 	}
 	
+	public Boolean fazerLogin (String nome, String senha) {
+		boolean usuario = false;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		String sql = "SELECT nome, senha FROM usuario WHERE nome = " + nome + "AND senha = " + senha;
+		
+		try {
+			stmt = conn.prepareStatement(sql);
+			stmt.execute();
+			JOptionPane.showMessageDialog(null, "Foi possível fazer login!");
+			return usuario = true;
+		} catch (SQLException ex) {
+			JOptionPane.showMessageDialog(null, "Não foi possível fazer login!");
+		}
+		return false;
+		}
 }
+		
+	
+		
+	
+	
+

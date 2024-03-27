@@ -1,6 +1,6 @@
 package br.com.autenticacao;
 
-import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 import br.com.autenticacao.controller.UsuarioController;
 import br.com.autenticacao.model.Usuario;
@@ -9,62 +9,37 @@ public class Main {
 
 	public static void main(String[] args) {
 
-//		Usuario usuario3 = new Usuario();
-//		
-//		usuario3.setNome("Isabel Zimmermann Rainert");
-//		usuario3.setEmail("IsabelZRainert@gmail.com");
-//		usuario3.setSenha("Deco");
-//		usuario3.setisAtivo(true);
-//		
-//		UsuarioController controller = new UsuarioController();
-//		controller.cadastrar(usuario3);
-		
-		Scanner scan = new Scanner(System.in);
-
 		UsuarioController controller = new UsuarioController();
 		
-		int opcao = 100;
-		
-		do {
-			System.out.println("|------------------------------------|");
-			System.out.println("|--------[1] Listar usuários.--------|");
-			System.out.println("|-----[2] Listar usuários p/ id.-----|");
-			System.out.println("|-------[3] Cadastrar usuário.-------|");
-			System.out.println("|--------[4] Alterar usuário.--------|");
-			System.out.println("|--------[5] Excluir usuário.--------|");
-			System.out.println("|------------[0] Encerrar.-----------|");
-			System.out.println("|------------------------------------|");
+		String funcao = JOptionPane.showInputDialog(
+				"Digite a função que deseja fazer: [1] Fazer login | [2]Cadastrar | [3] Esqueci minha senha.");
+//		JOptionPane.showMessageDialog(null, funcao);
+
+		switch (funcao) {
+		case "1":
+			String nome = JOptionPane.showInputDialog("Digite seu nome:");
+			String senha = JOptionPane.showInputDialog("Digite sua senha:");
 			
-			opcao = scan.nextInt();
 			
-			switch(opcao) {
-			case 1:
-				System.out.println("Vá pa merda");
-				break;
-			case 2:
-				System.out.println("Vá pa merda");
+			break;
+		case "2":
+			String nomeCad = JOptionPane.showInputDialog("Digite seu nome:");
+			String emailCad = JOptionPane.showInputDialog("Digite seu email:");
+			String senhaCad = JOptionPane.showInputDialog("Digite sua senha:");
+			
+			Usuario u = new Usuario();
+			u.setNome(nomeCad);
+			u.setEmail(emailCad);
+			u.setSenha(senhaCad);
+			u.setisAtivo(true);
+			controller.cadastrar(u);
+			break;
+		case "3":
+			
+			break;
 
-				break;
-			case 3:
-				System.out.println("Vá pa merda");
+		}
 
-				break;
-			case 4:
-				System.out.println("Vá pa merda");
-
-				break;
-			case 5:
-				System.out.println("Vá pa merda");
-
-				break;
-			case 0:
-				System.out.println("Vá pa merda");
-
-				break;
-			}
-		}while(opcao !=0);
-		
-		
 	}
 
 }
