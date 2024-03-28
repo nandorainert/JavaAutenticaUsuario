@@ -13,7 +13,6 @@ public class Main {
 		
 		String funcao = JOptionPane.showInputDialog(
 				"Digite a função que deseja fazer: [1] Fazer login | [2]Cadastrar | [3] Esqueci minha senha.");
-//		JOptionPane.showMessageDialog(null, funcao);
 
 		switch (funcao) {
 		case "1":
