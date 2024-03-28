@@ -172,26 +172,37 @@ public class UsuarioDAOImpl implements GenericDAO {
 		
 	}
 	
-	public Boolean fazerLogin (String nome, String senha) {
-		boolean usuario = false;
+	public Object autenticacao (String email, String senha) {
+		Usuario usuario = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		String sql = "SELECT nome, senha FROM usuario WHERE nome = " + nome + "AND senha = " + senha;
+		String sql = "select * from usuario where email like ? and senha = md5(?)";
 		
 		try {
 			stmt = conn.prepareStatement(sql);
-			stmt.execute();
-			JOptionPane.showMessageDialog(null, "Foi possível fazer login!");
-			return usuario = true;
-		} catch (SQLException ex) {
-			JOptionPane.showMessageDialog(null, "Não foi possível fazer login!");
+			stmt.setString(1, email);
+			stmt.setString(2, senha);
+			rs = stmt.executeQuery();
+			
+			if (rs.next()) {
+				usuario = new Usuario();
+				usuario.setId(rs.getInt("id"));
+				usuario.setNome(rs.getString("nome"));
+				usuario.setEmail(rs.getString("email"));
+				usuario.setisAtivo(rs.getBoolean("is_ativo"));
+				return usuario;
+			}
+			
+		}catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "Problemas na DAO ao fazer login" + e.getMessage());
+		} finally {
+			try {
+				ConnectionFactory.closeConnection(conn, stmt, null);
+			} catch (Exception e) {
+				JOptionPane.showMessageDialog(null, "Problemas na DAO ao fechar conexão! " + e.getMessage());
+				e.printStackTrace();
+			}
 		}
-		return false;
-		}
+		return usuario;
+	}
 }
-		
-	
-		
-	
-	
-

@@ -17,9 +17,11 @@ public class Main {
 
 		switch (funcao) {
 		case "1":
-			String nome = JOptionPane.showInputDialog("Digite seu nome:");
+			
+			String email = JOptionPane.showInputDialog("Digite seu email:");
 			String senha = JOptionPane.showInputDialog("Digite sua senha:");
 			
+			controller.autenticacao(email, senha);
 			
 			break;
 		case "2":

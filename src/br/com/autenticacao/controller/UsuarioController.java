@@ -2,6 +2,9 @@ package br.com.autenticacao.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.JOptionPane;
+
 import br.com.autenticacao.DAO.GenericDAO;
 import br.com.autenticacao.DAO.UsuarioDAOImpl;
 import br.com.autenticacao.model.Usuario;
@@ -71,5 +74,22 @@ public class UsuarioController {
 			e.printStackTrace();
 			return null;
 		}
+	}
+	
+	public Usuario autenticacao(String email, String senha) {
+		try {
+			UsuarioDAOImpl dao = new UsuarioDAOImpl();
+			Usuario usuario = (Usuario) dao.autenticacao(email, senha);
+			if(usuario != null){
+				JOptionPane.showMessageDialog(null, "Login feito com sucesso!");
+			}else {
+				JOptionPane.showMessageDialog(null, "Email ou senha errado.");
+			}
+			return usuario;
+	}catch (Exception e) {
+		JOptionPane.showMessageDialog(null, "Problemas na Controller para fazer login " + e.getMessage());
+		e.printStackTrace();
+		return null;
+	}
 	}
 }
