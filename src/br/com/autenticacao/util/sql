@@ -8,3 +8,7 @@ CREATE TABLE usuario (
 	is_ativo BOOLEAN,
 	CONSTRAINT pk_usuario primary key (id)
 );
+
+-- FAZENDO SELECT PARA VALIDAÇÃO DE USUÁRIO COM SENHA CRIPTOGRAFADA
+
+select * from usuario where email like (?) and senha = md5(?)
